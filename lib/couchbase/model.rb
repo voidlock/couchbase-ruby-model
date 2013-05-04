@@ -106,12 +106,6 @@ module Couchbase
     attr_accessor :id
 
     # @since 0.2.0
-    attr_reader :key
-
-    # @since 0.2.0
-    attr_reader :value
-
-    # @since 0.2.0
     attr_reader :doc
 
     # @since 0.2.0
@@ -467,8 +461,6 @@ module Couchbase
           attrs = attrs.with_indifferent_access
         end
         @id = attrs.delete(:id)
-        @key = attrs.delete(:key)
-        @value = attrs.delete(:value)
         @doc = attrs.delete(:doc)
         @meta = attrs.delete(:meta)
         @raw = attrs.delete(:raw)
@@ -779,8 +771,6 @@ module Couchbase
     # @since 0.0.1
     def inspect
       attrs = []
-      attrs << ["key", @key.inspect] unless @key.nil?
-      attrs << ["value", @value.inspect] unless @value.nil?
       model.attributes.map do |attr, default|
         val = read_attribute(attr)
         attrs << [attr.to_s, val.inspect] unless val.nil?
